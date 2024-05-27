@@ -1,0 +1,159 @@
+@import "scrollbar.css";
+/* @import "table.css"; */
+
+body {
+    background-color: #071425;
+    color: rgb(226, 226, 226);
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    overflow: overlay;
+}
+
+nav { 
+    display: flex;
+    /* background-color: #071425; */
+    background-color: #05111E;
+    /* min-height: 60px; */
+    /* height: 6vh; */
+    /* border-bottom: 3px solid #49422B; */
+    /* text-align: center; */
+}
+
+.nav-button {
+    flex-grow: 1;
+    align-self: center;
+    /* height: 100%; */
+    border-bottom: 3px solid #49422B;
+    /* border-bottom: 3px solid #071425; */
+}
+
+.nav-button:hover {
+    background-color: #0e2849;
+}
+
+/* .nav-button > h1 {
+    display: inline-block;
+    height: 100%;
+} */
+
+h1 {
+    text-align: center;
+    color: #999064;
+    /* font-size: 1em; */
+    /* margin: 0; */
+}
+
+#focused-page {
+    /* background-color: #49422B; */
+    background-color: #071425;
+    /* background-color: #05111E; */
+    /* border-bottom: 3px solid #49422B; */
+
+}
+
+#focused-page > h1 {
+    color: rgb(226, 226, 226);
+}
+
+/*
+focused item
+*/
+#focus-container {
+    display: grid;
+    /* grid-template-rows: fit-content(8ch) fit-content(8ch);
+    grid-template-columns: fit-content(8ch) fit-content(250px) fit-content(250px); */
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+    justify-content: center;
+    justify-items: center;
+}
+
+.item-image {
+    /* background-color: green; */
+    /* background-image: url('/images/devourers-gauntlet.webp'); */
+    margin: 10px auto;
+    /* margin: 10px 20px 10px 40px; */
+    /* padding: 20px; */
+    height: 100px;
+    width: 100px;
+    border-radius: 10%;
+}
+
+/*big has to be after item-image so sizing applies correctly*/
+#big {
+    height: 250px;
+    width: 250px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 2 / 3;
+    align-self: center;
+}
+
+#item-desc {
+    margin: 0 20px 20px 20px;
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+    font-size: 1.1rem;
+}
+
+#item-name {
+    color: #999064;
+    grid-row: 1 / 2;
+}
+
+#item-text {
+    grid-row: 2 / 3;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+
+/*
+all items list
+*/
+#grid-container {
+    display: grid;
+    background-color: #05111E;
+    border: 3px solid #49422B;
+    margin: 0 10% 5% 10%;
+    grid-template-rows: 1fr fit-content(400px);
+    /* max-width: 80vw;
+    overflow-x: scroll; */
+}
+
+#grid-title-bar {
+    display: grid;
+    grid-template-columns: 2fr 3fr 3fr 3fr;
+    border-bottom: 3px solid #49422B;
+}
+
+#title-image {
+    grid-column: 1 / 2;
+}
+
+#title-name {
+    grid-column: 2 / 3;
+}
+
+#title-wr {
+    grid-column: 3 / 4;
+}
+
+#title-best {
+    grid-column: 4 / 5;
+}
+
+.grid-item {
+    margin: auto;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    grid-auto-flow: column;
+    grid-template-columns: 2fr 3fr 3fr 3fr;
+}
+
+.grid-item:hover {
+    background-color: #0e2849;
+    /* background-color: #49422B; */
+}

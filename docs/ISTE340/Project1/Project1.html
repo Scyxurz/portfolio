@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Project 1 Dropdown</title>
+    <script src="cookies.js"></script>
+    <script>
+
+        //check broswer for localStorage capability
+        try{
+            localStorage.setItem('test', 'test');
+            localStorage.removeItem('test');
+        } catch(e){
+            window.location = "legacy.html";
+        }
+        
+        const DATA = {
+            start: ['Category:', ['starter', 'Starter'], ['trade', 'Trade Evolution'], ['legendary', 'Legendary']],
+            //starters
+            starter: ['Type:', ['grassForm', 'Grass type'], ['waterForm', 'Water type'], ['fireForm', 'Fire type']],
+            //water type
+            waterForm: ['Stage of evolution:', ['firstRegionW', 'First stage'], ['secondRegionW', 'Second stage'], ['thirdRegionW', 'Third stage']],
+            firstRegionW: ['Region of origin:', ['Squirtle', 'Kanto Region'], ['Totodile', 'Johto Region'], ['Mudkip', 'Hoenn Region']],
+            secondRegionW: ['Region of origin:', ['Wartortle', 'Kanto Region'], ['Croconaw', 'Johto Region'], ['Marshtomp', 'Hoenn Region']],
+            thirdRegionW: ['Region of origin:', ['Blastoise', 'Kanto Region'], ['Feraligatr', 'Johto Region'], ['Swampert', 'Hoenn Region']],
+
+            //grass type
+            grassForm: ['Stage of evolution:', ['firstRegionG', 'First stage'], ['secondRegionG', 'Second stage'], ['thirdRegionG', 'Third stage']],
+            firstRegionG: ['Region of origin:', ['Bulbasaur', 'Kanto Region'], ['Chikorita', 'Johto Region'], ['Treecko', 'Hoenn Region']],
+            secondRegionG: ['Region of origin:', ['Ivysaur', 'Kanto Region'], ['Bayleef', 'Johto Region'], ['Grovyle', 'Hoenn Region']],
+            thirdRegionG: ['Region of origin:', ['Venusaur', 'Kanto Region'], ['Meganium', 'Johto Region'], ['Sceptile', 'Hoenn Region']],
+
+            //fire type
+            fireForm: ['Stage of evolution:', ['firstRegionF', 'First stage'], ['secondRegionF', 'Second stage'], ['thirdRegionF', 'Third stage']],
+            firstRegionF: ['Region of origin:', ['Charmander', 'Kanto Region'], ['Cyndaquil', 'Johto Region'], ['Torchic', 'Hoenn Region']],
+            secondRegionF: ['Region of origin:', ['Charmeleon', 'Kanto Region'], ['Quilava', 'Johto Region'], ['Combusken', 'Hoenn Region']],
+            thirdRegionF: ['Region of origin:', ['Charizard', 'Kanto Region'], ['Typhlosion', 'Johto Region'], ['Blaziken', 'Hoenn Region']],
+
+            //trade evolutions
+            trade: ['Type:', ['Gengar', 'Ghost type'], ['Alakazam', 'Psychic type'], ['Machamp', 'Fighting type'], ['Golem', 'Rock type']],
+
+            //legendary
+            legendary: ['Legendary status:', ['standard', 'Standard'], ['mythical', 'Mythical']],
+            standard: ['Body shape:', ['Mewtwo', 'Humanoid'], ['blt', 'BLT (Big Lizard Thing)']],
+            blt: ['Domain:', ['Rayquaza', 'Sky'], ['Giratina', 'Void']],
+            mythical: ['Associated aspect:', ['Celebi', 'Time'], ['Darkrai', 'Nightmares'], ['Arceus', 'Creation']]
+
+            //If path terminates with value, run generatePokemon(val) function (val will be the image that comes up)
+        };
+
+        let RESULTS = [];
+
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        function $$(tag, num) {
+            return document.getElementsByTagName(tag)[num];
+        }
+
+        //cookies
+        if(GetCookie("trainerName") == null){
+            let name = prompt("Welcome, new Pokemon Trainer! Please enter your name.");
+            SetCookie("trainerName", name);
+        }
+
+        //think about working in a group
+        const APP = (function () {
+            function construct(choice) {
+                if(!choice){
+                    //if choice hasn't been made, use starting values
+                    var choice = "start";
+                    $("teamName").textContent = GetCookie("trainerName") + "'s Team:";
+                    if(document.cookie.length > 0){
+                        rebuildFromCookies();
+                    }
+                }
+                if(choice in DATA){
+                    //Create div for dropdown menu to live in
+                    let div = document.createElement('div');
+                    div.setAttribute("style", "width:35%");
+                    div.setAttribute("id", String(choice) + "Div");
+                    div.setAttribute("class", "menuDiv");
+                    $$('body', 0).appendChild(div);
+                    
+                    //Create dropdown select menu
+                    var rEle = document.createElement('select');
+                    rEle.setAttribute("onchange", "APP.choose(this)");
+
+                    //Create default prompt for dropdown
+                    let start = document.createElement('option');
+                    start.setAttribute('value', "");
+                    start.setAttribute("disabled", "true");
+                    start.setAttribute("selected", "true");
+                    let text = document.createTextNode(DATA[choice][0]);
+                    start.appendChild(text);
+                    
+                    //Add elements to page
+                    rEle.appendChild(start);  
+                    div.appendChild(rEle);
+
+                    //set select values using choice
+                    for (let i = 1, val = DATA[choice]; i < Object.values(val).length; i++) {
+                        let opt = document.createElement('option');
+                        opt.setAttribute('value', val[i][0]);
+                        //console.log("OPTION VALUE:", opt.value);
+                        opt.appendChild(document.createTextNode(val[i][1]));
+                        rEle.appendChild(opt);
+                    }
+
+                    //element slides onto page after being created
+                    //UTIL.moveRight(String(choice) + 'Div', 5, 100, 10);
+                } else{
+                    //if choice is at the end of a path, give a result instead of creating a new select
+                    generatePokemon(choice);
+                }
+            }
+
+            function resetToSpecified(id){
+                //remove all selects after the one being interacted with
+                while($$('body', 0).getElementsByClassName("menuDiv")[$$('body', 0).getElementsByClassName("menuDiv").length - 1] != id){
+
+                    //element slides off page before being removed
+                    //UTIL.moveLeft(id, 5, 100, 10);
+
+                    //delete everything from RESULTS that was added by the removed selects
+                    cleanResults();
+                    $$('body', 0).removeChild($$('body', 0).getElementsByClassName("menuDiv")[$$('body', 0).getElementsByClassName("menuDiv").length - 1]);
+                }
+                if($$('body', 0).lastElementChild == id){
+                    //remove one more time since the while loop stops before checking the original select
+                    cleanResults();
+                }
+                
+                //change pokemon image back to a closed pokeball
+                closeBall();
+            }
+
+            function cleanResults(){
+                //get last select on page
+                let deleteOpt = $$('body', 0).getElementsByClassName("menuDiv")[$$('body', 0).getElementsByClassName("menuDiv").length - 1].getElementsByTagName('select')[0].options;
+                //for each option in that select:
+                for(let i = 0; i < deleteOpt.length; i++){
+                    //console.log("DELETING MENU OPTION:", deleteOpt[i].text);
+                    //check if that option has been chosen and is in RESULTS
+                    if(RESULTS.includes(deleteOpt[i].text) && RESULTS.length >= 1){
+                        //if it is, delete it from RESULTS
+                        //console.log(deleteOpt[i].text, "MATCHES");
+                        RESULTS.splice(RESULTS.indexOf(deleteOpt[i].text), 1);
+                        //console.log("NEW RESULTS:", RESULTS);
+                    }
+                }
+            }
+
+            function generatePokemon(str){
+                //empty descriptors if they already exist
+                while($("chosenDesc").lastElementChild.nodeName == "P"){
+                    $("chosenDesc").lastElementChild.remove();
+                }
+
+                //pokemon images taken from pokemon.com, pokeball images made by me
+                openBall(str);
+
+                //create text showing user choices that led to this pokemon being selected
+                $("youChose").textContent = str;
+                $("chosenPage").textContent = "Pokedex entry";
+                $("chosenPage").setAttribute("href", "https://www.pokemon.com/us/pokedex/" + str);
+                for(let i = 0; i < RESULTS.length; i++){
+                    let text = document.createElement('p');
+                    text.textContent = RESULTS[i];
+                    $("chosenDesc").appendChild(text);
+                }
+                addToTeam(str);
+            }
+
+            function openBall(str){
+                //animation to open the pokeball and revealing the pokemon inside
+                let img = $("pokemonImg");
+                img.setAttribute('src', './Images/Pokeball_open.png');
+                setTimeout(function(){
+                        if(fileExists('./Images/' + str + '.png')){
+                            img.setAttribute('src', './Images/' + str + '.png');
+                        }
+                        img.setAttribute('alt', str + " image not found");
+                    }, 600);
+            }
+
+            function closeBall(){
+                //animation to close the pokeball when going back to interact with the menu
+                let img = $("pokemonImg");
+                if(img.getAttribute('src') != './Images/Pokeball_closed.png'){
+                    img.setAttribute('src', './Images/Pokeball_open.png');
+                }
+                setTimeout(function(){
+                    img.setAttribute('src', './Images/Pokeball_closed.png');
+                }, 600);
+            }
+
+            function addToTeam(str){
+                //determine how many pokemon are already in team
+                let teamSize = 0;
+                for(let node of $("team").children){
+                    if(node.className == "teamMember"){
+                        teamSize++;
+                    }
+                }
+                if(teamSize < 6){
+                    //add pokemon to team if there are fewer than 6
+                    let newAddition = document.createElement('div');
+                    let newImg = document.createElement('img');
+                    newImg.setAttribute('src', './Images/' + str + '.png');
+                    newImg.setAttribute('style', 'max-width: 100%;');
+                    newAddition.setAttribute('class', 'teamMember');
+                    newAddition.setAttribute('style', 'display: inline-block; width: 15%; background-image: url("./Images/Pokeball_closed.png"); background-size: contain; background-repeat: no-repeat; margin: 2px');
+                    newAddition.appendChild(newImg);
+                    $("team").appendChild(newAddition);
+
+                    //create a cookie holding that pokemon
+                    document.cookie = "pokemon" + teamSize + "=" + str;
+                }
+            }
+
+            function rebuildFromCookies(){
+                let cookies = document.cookie.split(';');
+                for (let i = 0 ; i <= cookies.length - 1; i++) {
+                    if(cookies[i].split('=')[0].replace(/\s+/g, '').includes("pokemon")){
+                        addToTeam(GetCookie(cookies[i].split('=')[0].replace(/\s+/g, '')));
+                    }
+                }
+            }
+
+            function fileExists(fileName){
+                let request = new XMLHttpRequest();
+                request.open('HEAD', fileName, false);
+                request.send();
+                return request.status != 404;
+            }
+
+            function choose(id) {
+                //gets the array in DATA that correlates with selected value
+                //uses the value of selected option to build next select
+                let choice = id.value;
+                console.log(choice, "SELECTED");
+                APP.resetToSpecified(id.parentNode);
+                //stores the text of selected option to build final results later
+                let choiceValue = id.options[id.selectedIndex].text;
+                RESULTS.push(choiceValue);
+                console.log(choiceValue, "PUSHED TO RESULTS");
+                console.log("RESULTS:", RESULTS);
+                APP.construct(choice);
+            }
+
+            function resetTeam(){
+                //reset team cookies
+                let cookies = document.cookie.split(';');
+                for (let i = 0 ; i <= cookies.length - 1; i++) {
+                    DeleteCookie(cookies[i].split('=')[0].replace(/\s+/g, ''), "/", window.location.hostname);
+                }
+                //remove all pokemon from team
+                while($("team").querySelectorAll('.teamMember').length > 0){
+                    $("team").querySelectorAll('.teamMember')[0].remove();
+                }
+            }
+
+            return {
+                construct: construct,
+                choose: choose,
+                resetToSpecified: resetToSpecified,
+                resetTeam: resetTeam
+            }
+        })();
+
+        const UTIL = (function () {
+
+            //wasn't able to figure out how to implement this in time...
+
+            function moveRight(id, dx, end, speed) {
+                //dhtml slide function for creating div
+                if(parseInt(id.style.left) < end){
+                    dom.style.left = parseInt(id.style.left) + dx + "px";
+                    setTimeout(function(){go(id, dx, end, speed);}, speed);
+                }
+            }
+
+            function moveLeft(id, dx, end, speed) {
+                //dhtml slide function for destroying div
+			    if(parseInt(id.style.left) > end){
+                    dom.style.left = parseInt(id.style.left) - dx + "px";
+                    setTimeout(function(){go(id, dx, end, speed);}, speed);
+                }
+            }
+
+            return {
+                //external name: internal name
+                moveRight: moveRight,
+                moveLeft: moveLeft,
+            }
+        })();
+    </script>
+    <style>
+
+        body{
+            background-color: rgb(201, 223, 243);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        div {
+            padding: 4px;
+        }
+
+        div select{
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 1vmin;
+            background-color: rgb(233, 241, 221);
+            font-size: 1.4em;
+            text-align: center;
+        }
+
+        .menuDiv{
+            background-color: rgb(163, 201, 236);
+            border-radius: 1vmin;
+            height: 5vh;
+            margin: 2vh 0 2vh 0;
+        }
+
+        #resetTeam{
+            background-color: rgb(255, 185, 185);
+            border-radius: 1vmin 0 0 1vmin;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        a{
+            font-size: 1.4em;
+        }
+        
+    </style>
+</head>
+
+<body onload="APP.construct()">
+    <div style="width:35%">
+        <h1 style="text-align: center;">Pokemon Generator</h1>
+    </div>
+    <div style="position: fixed; top: 0; left: 40%;">
+        <div id="imgDiv" style="float: left; width: 475px;">
+            <img id="pokemonImg" src="./Images/Pokeball_closed.png" alt="Pokeball_closed image not found">
+        </div>
+        <div id="chosenDesc" style="float: right;  clear: right;">
+            <div>
+                <h2 id="youChose" style="text-align: center;"></h2>
+                <h4><a id="chosenPage" href="" target="_blank"></a></h4>
+            </div>
+        </div>
+    </div>
+    <div id="resetTeam" style="position: fixed; bottom: 40%; right: 0; max-width: 10%;" onclick="APP.resetTeam();" onmouseover="this.style.backgroundColor='red';" onmouseleave="this.style.backgroundColor='rgb(255, 185, 185)'">
+        <h2 style="text-align: center;">RESET TEAM</h2>
+    </div>
+    <div id="team" style="position: fixed; bottom: 0; left: 0; width: 100%; ">
+        <h2 id="teamName"></h2>
+    </div>
+</body>
+
+</html>

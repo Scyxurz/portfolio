@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Aaron Siegelman, ISTE-240, 2218-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>Living in Tel Aviv</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/project1.css" />
+</head>
+
+<body>
+    <nav>
+        <!--The start of implementing an on-click hamburger menu for mobile-->
+        <img src="assets/images/menu.png" alt="hamburger menu icon" id="hamburger_menu" />
+        <ul>
+            <li>
+                <div><a href="index.html">Home</a></div>
+            </li>
+            <li>
+                <div><a href="#">Places</a></div>
+                <ul class="dropdown">
+                    <li><a href="tlv_mall.html">TLV Fashion Mall</a></li>
+                    <li><a href="azrieli.html">Azrieli Center</a></li>
+                    <li><a href="waffle.html">Waffle Bar</a></li>
+                    <li><a href="masada.html">Masada</a></li>
+                    <li><a href="jerusalem.html">Jerusalem</a></li>
+                    <li><a href="crater.html">Ramon Crater</a></li>
+                    <li><a href="ein_gedi.html">Ein Gedi</a></li>
+                </ul>
+            </li>
+            <li>
+                <div><a href="#">Maps</a></div>
+                <ul class="dropdown">
+                    <li><a href="israel_map.html">Israel</a></li>
+                    <li><a href="tlv_map.html">Tel Aviv</a></li>
+                </ul>
+            </li>
+            <li>
+                <div><a href="grading.html">Grading</a></div>
+            </li>
+            <li>
+                <div><a href="sources.html">Sources</a></div>
+            </li>
+        </ul>
+    </nav>
+
+    <h1>Map of Israel</h1>
+    <hr>
+    <div class="wrapper">
+        <figure>
+            <img src="assets/images/israel_map.jpg" alt="Map of Israel" usemap="#israelmap" />
+            <figcaption class="caption">Clickable map of Israel</figcaption>
+            <map name="israelmap">
+                <area shape="circle" coords="108, 213, 20" alt="Tel Aviv" href="index.html" />
+                <area shape="circle" coords="176, 265, 20" alt="Jerusalem" href="jerusalem.html" />
+                <area shape="circle" coords="194, 357, 20" alt="Masada" href="masada.html" />
+                <area shape="circle" coords="124, 465, 20" alt="Ramon Crater" href="crater.html" />
+                <area shape="circle" coords="197, 320, 20" alt="Ein Gedi" href="ein_gedi.html" />
+            </map>
+        </figure>
+        <article>
+            <p>
+                Above is a map encapsulating the 5 places in Israel mentioned on this site: Tel Aviv, Jerusalem, Masada,
+                the Ramon Crater, and Ein Gedi. If you hover the mouse near the blue waypoints you
+                can click and be brought to the page talking about those places.
+            </p>
+        </article>
+    </div>
+</body>
+
+</html>

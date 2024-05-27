@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Aaron Siegelman, ISTE-240, 2218-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>Living in Tel Aviv</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/project1.css" />
+</head>
+
+<body>
+    <nav>
+        <!--The start of implementing an on-click hamburger menu for mobile-->
+        <img src="assets/images/menu.png" alt="hamburger menu icon" id="hamburger_menu" />
+        <ul>
+            <li>
+                <div><a href="index.html">Home</a></div>
+            </li>
+            <li>
+                <div><a href="#">Places</a></div>
+                <ul class="dropdown">
+                    <li><a href="tlv_mall.html">TLV Fashion Mall</a></li>
+                    <li><a href="azrieli.html">Azrieli Center</a></li>
+                    <li><a href="waffle.html">Waffle Bar</a></li>
+                    <li><a href="masada.html">Masada</a></li>
+                    <li><a href="jerusalem.html">Jerusalem</a></li>
+                    <li><a href="crater.html">Ramon Crater</a></li>
+                    <li><a href="ein_gedi.html">Ein Gedi</a></li>
+                </ul>
+            </li>
+            <li>
+                <div><a href="#">Maps</a></div>
+                <ul class="dropdown">
+                    <li><a href="israel_map.html">Israel</a></li>
+                    <li><a href="tlv_map.html">Tel Aviv</a></li>
+                </ul>
+            </li>
+            <li>
+                <div><a href="grading.html">Grading</a></div>
+            </li>
+            <li>
+                <div><a href="sources.html">Sources</a></div>
+            </li>
+        </ul>
+    </nav>
+
+    <h1>Grading</h1>
+    <hr>
+    <div class="wrapper">
+        <article>
+            <p>
+                I feel like my end product looks like a rushed job, but I did spend a lot of time on it. One of the
+                biggest time-sinks, and something that I'm annoyed I still can't get working how I want it to work, is
+                the dropdown navigation menu. It's almost exactly how I want it in desktop mode, but when shrinking the
+                screen size to view the site as it would appear on mobile, I wanted to create a hamburger menu that
+                could be opened and closed by clicking on it. I had paused implementation of the hamburger menu, as a
+                different issue came up that I couldn't overcome. I want the menu to stick to the left side of the
+                screen on mobile and take up the height of the screen, and clicking on elementsof the nav bar that would
+                open a dropdown, like "Places," would either extend the menu allowing the user to scroll down, or would
+                extend the menu to the right, blocking more of the screen but allowing easier navigation.
+                <br><br>
+                Ignoring that, I also had some issue getting images to be the correct size, which I think could be
+                easily solved with just a bit more time to make sure they all have the same dimensions. I tried to have
+                at least 1 or 2 images on every page, and a paragraph or 2 describing the area. Every page is consistent
+                as they all rely on the same stylesheet, and although it doesn't look great visually, I'm pleased that
+                most of it works as intended. One thing I enjoyed learning about was creating clickable areas on a map
+                to bring the user to the page about that location. It currently has an issue where resizing the page
+                makes finding the clickable spots harder as the coordinates are tied to image size, but I assume that
+                can be fixed with JavaScript, although it may be beyond my current abilities.
+                <br><br>
+                There's also a warning that pops up when validating about using a header element inside an article tag,
+                but considering how close to the deadline I'm submitting this I'll just try to remember to get back to
+                it next time.
+            </p>
+        </article>
+    </div>
+</body>
+
+</html>

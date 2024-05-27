@@ -1,0 +1,17 @@
+/*
+author: Aaron Siegelman
+date: 5/31/2022
+class: ISTE 240
+
+Style for EX05*/
+
+body {
+    margin-left: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*This doesn't seem to get recognized by the js file. Is it only loaded afterwards?
+#movingText{
+    position: relative;
+    left: 0px;
+}
+*/

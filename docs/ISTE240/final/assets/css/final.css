@@ -1,0 +1,156 @@
+/*
+author: Aaron Siegelman
+date: 5/29/2022
+class: ISTE 240
+
+Style for Project 1 site*/
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/*Images auto scale*/
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    margin: auto;
+}
+
+/*Nav bar starts*/
+#hamburger_menu {
+    margin: 8px;
+}
+
+nav ul {
+    /*position: fixed; WIP for making hamburger menu work properly.
+    Need li elements to fit screen height and have hovered element stay lit
+    so all dropdown options are visible while still knowing which menu
+    item is being selected*/
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+.navBar{
+    display: block;
+}
+
+nav ul li{
+    display: block;
+    position: relative;
+    line-height: 3em;
+    width: 100%;
+    text-align: center;
+    background-color: black;
+}
+
+/*when this is hovered,
+dropdown menu should appear
+by expanding downwards
+*/
+nav ul li.bar{
+    width: 14em;
+}
+
+.active {
+    background-color: darkslategray;
+    border: 1px solid darkslategray;
+    border-width: 1px 0px 1px 0px;
+}
+
+nav ul li a{
+    display: block;
+    padding: 8px 25px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+    border-width: 1px 0px 1px 0px;
+}
+
+nav ul li a:hover{
+    border: 1px solid lightblue;
+    border-width: 1px 0px 1px 0px;
+}
+
+nav ul li ul.dropdown{
+    min-width: 100%;
+    display: none;
+    position: absolute;
+    z-index: 999;
+    left: 100%;
+    top: 0;
+}
+
+/*unnecessary if javascript works?
+nav ul li:hover ul.dropdown{
+    display: block;
+}*/
+
+/*Nav bar ends*/
+
+h1 {
+    text-align: center;
+}
+
+a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+img{
+    margin-top: 18px;
+    max-width: 80vw;
+}
+figcaption{
+    text-align: center;
+}
+article p {
+    margin: 4% 10%;
+}
+
+footer p{
+    text-align: center;
+    bottom: 0;
+}
+ol{
+    margin: 4% 10%;
+}
+ol li{
+    margin: 8px;
+}
+#cr{
+    font-size: 0.8em;
+}
+
+.commentSection{
+    margin: 4% 10%;
+}
+@media only screen and (min-width: 600px) {
+
+    /*Change nav bar and adjust spacing for computer screens*/
+    #hamburger_menu {
+        display: none;
+    }
+
+    nav {
+        width: 80vw;
+        margin: auto;
+    }
+    
+    nav ul{
+        display: block;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    nav ul li {
+        display: inline-block;
+    }
+    
+    nav ul li ul.dropdown {
+        left: 0;
+        top: 100%;
+    }
+}

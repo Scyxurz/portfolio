@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Aaron Siegelman, ISTE 240, 2218-->
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+    <title>A Web Page</title>
+</head>
+
+<body>
+    <nav>
+        <figure>
+            <img src="assets/images/logo.png" alt="logo" width="200" height="150">
+        </figure>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Activites</a></li>
+            <li><a href="#">Food</a></li>
+            <li><a href="#">Rest</a></li>
+            <li><a href="#">People</a></li>
+            <li><a href="#">Feedback</a></li>
+        </ul>
+    </nav>
+    <form action="#" method="get" class="form">
+        <h1>Please tell us about your visit:</h1>
+        <hr />
+
+        <div class="inputDiv">
+            <label for="group">How many in your group?&nbsp;</label>
+            <input type="number" name="group" id="group" min="1" max="6">
+        </div>
+
+        <div class="inputDiv">
+            <label for="date">When did you Visit?&nbsp;</label>
+            <input type="date" id="date" name="date" />
+        </div>
+
+        <fieldset>
+            <legend>Favorite Place</legend>
+            <label for="field"><input type="radio" id="field" name="favplace" />&nbsp;Baseball Field</label>
+            <label for="museum"><input type="radio" id="museum" name="favplace" />&nbsp;Museum</label>
+            <label for="restaurant"><input type="radio" id="restaurant" name="favplace" />&nbsp;Luigi's Italian
+                Restaurant</label>
+            <label for="hotel"><input type="radio" id="hotel" name="favplace" />&nbsp;Mom's Hotel</label>
+            <label for="hostel"><input type="radio" id="hostel" name="favplace" />&nbsp;The Youth Hostel</label>
+        </fieldset>
+
+        <div class="rangeDiv">
+            <label for="rating">Overall Rate your visit to our small town:</label><br>
+            0&nbsp;
+            <input type="range" id="rating" min="0" max="10" step="1" list="ratingScore" />
+            &nbsp;10<br>
+            <datalist id="ratingScore">
+                <option value="0" label="0"></option>
+                <option value="1" label="1"></option>
+                <option value="2" label="2"></option>
+                <option value="3" label="3"></option>
+                <option value="4" label="4"></option>
+                <option value="5" label="5"></option>
+                <option value="6" label="6"></option>
+                <option value="7" label="7"></option>
+                <option value="8" label="8"></option>
+                <option value="9" label="9"></option>
+                <option value="10" label="10"></option>
+            </datalist><br>
+            <input type="submit" class="button" value="Submit" />
+        </div>
+
+    </form>
+
+</body>
+
+</html>

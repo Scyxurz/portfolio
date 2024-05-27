@@ -1,0 +1,108 @@
+/*Typeface obtained from google fonts*/
+@font-face {
+    font-family: "VarelaRound";
+    src: url(fonts/Varela_Round/VarelaRound-Regular.ttf);
+}
+
+body {
+    background-color: lightgray;
+    color: rgb(0, 81, 255);
+    font-weight: bold;
+    font-size: 1.2em;
+    font-family: "VarelaRound", Arial, Helvetica, sans-serif;
+}
+
+/*Nav bar starts here*/
+img {
+    border-radius: 40%;
+    float: left;
+    margin-right: 24px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    font-weight: normal;
+    color: black;
+    text-decoration: none;
+}
+
+nav li {
+    float: left;
+    width: 10em;
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+    border-width: 1px 0px 1px 0px;
+    padding: .3em;
+    margin-top: 2.5em;
+}
+
+/*Only gives first and last li borders so it looks like a box*/
+nav li:first-of-type {
+    border-left: 1px solid black;
+}
+
+nav li:last-of-type {
+    border-right: 1px solid black;
+}
+/*Div containing the header and all the form elements*/
+form {
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+h1 {
+    clear: both;
+    font-style: italic;
+    width: 100%;
+    margin: auto;
+    padding: 1em;
+    text-align: center;
+    color: rgb(0, 69, 133);
+    border-bottom: 1px solid black;
+}
+
+/*Radio buttons grouped together*/
+fieldset legend {
+    color: black;
+}
+
+fieldset {
+    background-color: rgb(183, 197, 206);
+    width: 50%;
+    margin: auto;
+}
+
+fieldset label {
+    display: block;
+}
+
+.inputDiv {
+    padding: 1em;
+}
+
+/*Slider*/
+.rangeDiv {
+    padding: 1em;
+    text-align: center;
+}
+input[type="range"]{
+    width: 35%;
+}
+
+/*Submit button*/
+.button {
+    background-color: rgb(0, 81, 255);
+    color: white;
+    font-size: 1.4em;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 60px;
+    width: 140px;
+    margin: 12px;
+}

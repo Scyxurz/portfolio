@@ -1,0 +1,155 @@
+body{
+    background-color: white;
+    margin: 0;
+}
+nav{
+    position: fixed;
+    bottom:0;
+    left: 0;
+    right: 0;
+    z-index: 100; /*keeps nav bar in front of anything else*/
+    border-top: 2px solid black;
+    box-shadow: 2px 2px 10px black;
+    font-weight: 700;
+}
+.navigation{
+    background-color: #0038B8; /*Same blue as Israeli flag, the color scheme of the page*/
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    font-size: 1.4rem;
+    text-align: center;
+}
+html{
+    scroll-behavior: smooth;
+}
+a{
+    color: white;
+    text-shadow: 3px 3px 10px black;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+a:hover{
+    text-decoration: underline;
+    color: white;
+}
+a:visited{
+    color: white;
+}
+#source{
+    color: #0038B8;
+    text-shadow: none;
+    font-weight: 600;
+}
+#container{
+    background-color: white;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto auto auto;
+    padding: 0;
+}
+#article{
+    padding: 10px;
+    border-bottom: 2px solid black;
+    grid-row: 2;
+    font-weight: 600;
+}
+#credit{
+    padding: 10px;
+    border-bottom: 2px solid black;
+    grid-row: 3;
+    text-align: center;
+}
+h1{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2.5rem;
+    overflow: auto;
+}
+h2{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 15px;
+    margin: 0;
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+#video_container{
+    /*Makes video stick to top while scrolling to see the video while reading the pamphlet*/
+    position: sticky;
+    top:0;
+    grid-row: 4;
+    grid-column: 1;
+}
+#video{
+    width: 100%;
+    height: auto;
+    box-shadow: 2px 2px 10px black;
+}
+#images{
+    background-color: white;
+    padding:12px;
+    padding-top: 0;
+    grid-row: 5;
+}
+figure{
+    margin: 0;
+}
+.img_shadow{
+    box-shadow: 2px 2px 10px black;
+}
+header{
+    text-align: center;
+    border-bottom: 2px solid black;
+    grid-row: 1;
+}
+@media screen and (min-width: 768px){
+    #container{
+        grid-template-columns: 10% 60% 30%;
+        grid-template-rows: 130px auto auto auto auto;
+    }
+    nav{
+        /*Moves nav bar to left side since there's enough space on desktop and prevents it from scrolling*/
+        position: sticky;
+        top:0;
+        left:0;
+        height: 100vh;
+        box-sizing: border-box;
+        margin-right: 10px;
+        border-right: 2px solid black;
+        border-top: none;
+    }
+    .navigation{
+        flex-direction: column;
+        height: 100vh;
+    }
+    #images{
+        grid-column: 2;
+        grid-row: 2/5;
+    }
+   #video_container{
+        position: fixed;
+    }
+    #video{
+        position: fixed;
+        max-width: 29.5vw;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+    }
+    header{
+        grid-column: 2/4;
+        grid-row: 1;
+    }
+    #article{
+        grid-column: 3;
+        grid-row: 2/3;
+    }
+    #credit{
+        padding: 10px;
+        border-bottom: 2px solid black;
+        grid-column: 3;
+        grid-row: 3/4;
+    }
+}

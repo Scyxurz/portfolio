@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    /* images should be responsive */
+    box-shadow: 4px 4px 6px gray;
+}
+
+/* Create Text styles for size, color, weight, padding, etc. for your text elements (h1-h4, p) */
+
+h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 4rem;
+    font-weight: 800;
+    color: gray;
+    padding: 20px;
+}
+
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    color: black;
+    padding-left: 20px;
+}
+
+h3{
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    padding: 20px;
+}
+
+h4{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    padding: 10px;
+    padding-left: 20px;
+    font-weight: 600;
+    color: gray;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    padding: 5px;
+    padding-left: 20px;
+    font-weight: 600;
+    color: black;
+}
+
+header{
+    /* provide a height (or max-height)
+    background-position, and background-size properties */
+    height: 56.25%;
+    background-position: center;
+    background-size: 1620px 1080px;
+    /* background-image: Load cold_vast.jpg here */ 
+    background-image: url("imgs/cold_vast.jpg");
+}
+
+.headerText {
+    /* Padding, margins, whatever you neeed */
+    padding: 20px;
+    margin: 5px;
+}
+
+main {
+    /* This will be a flex container for the section elements, arranged in a column with spacing. */
+    display: flex;
+    flex-direction: column;
+}
+
+/****** Create a base level mobile layout first. Each section will be its own grid structure. */
+
+.first {
+    /* make this a 4 column grid, with 3 rows. Apply column/row sizes, gap, and margins for spacing as your eyes sees fit */
+   display:grid;
+   grid-template-columns: auto auto auto auto;
+   grid-template-rows: auto auto auto;
+   gap: 5px;
+   margin: 25px;
+}
+
+.firstImage1 {
+    /* This will span all 4 columns, and the first two rows. */
+    object-fit: cover;
+    grid-column: 1/5;
+    grid-row: 1/3;
+}
+
+.firstTextContent {
+    /* This will start in column 2 and span 3 + 4. It will also occupy row 2. Use the z-index property to "elevate" it above the images. Apply a background-color, border-left, as well as any padding.  */
+    grid-column: 2/ span 3;
+    grid-row: 2;
+    z-index: 10;
+    background-color: white;
+    border-left: 6px solid rgb(151, 29, 29);
+    padding: 30px;
+}
+
+.firstImage2 {
+    /* This image will span all 4 columns, and use the third row.  */
+    object-fit: cover;
+    grid-column: 1/5;
+    grid-row: 3/4;
+}
+
+.second {
+    /* The second section will also be a 4 column x 3 row grid. Use the gap property here too. */
+   display:grid;
+   grid-template-columns: auto auto auto auto;
+   grid-template-rows: auto auto auto;
+   gap: 5px;
+   margin: 25px;
+}
+
+
+.rghtTextContent {
+    /* Span the first three columns and rows two and three. Use a background color and create the left-border effect */
+   grid-column: 1/4;
+   grid-row: 2/4;
+   background-color: white;
+   border-left: 6px solid rgb(151, 29, 29);
+   padding: 30px;
+}
+
+.secondImage1 {
+    /* Span all 4 columns and and the first two rows */
+    object-fit: cover;
+    grid-column: 1/5;
+    grid-row: 1/3;
+}
+
+.sections {
+    /* Use this for any addtional spacing or styling */
+}
+
+.flexed {
+    /* Display this as a flex-box */
+   display: flex;
+}
+
+.flexed figure {
+    /* Use the shorthand flex property to provide a flex-grow, and flex-shrink value of 1 and the flex-basis as 150px. Provide an margin, padding for spacing and center aligning the fig caption. */
+    flex: 1 1 150px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+figure img {
+    /* Turn the box shadow off for these and provide some padding */
+   box-shadow: none;
+   padding: 15px;
+}
+
+/* ///////////////  Media Query | min-width 768px  ///////////////  */
+@media screen and (min-width: 768px){
+    /* set your media query here */
+
+header {
+    height: 32vh; 
+}
+
+h3 {
+    font-size: 6rem;
+}
+
+.first {
+    /* Simple two column, two row grid  */
+   grid-template-columns: auto auto;
+   grid-template-rows: auto auto;
+}
+
+.firstImage1 {
+    /* Span the first column and both rows */
+   grid-column: 1;
+   grid-row: 1/3;
+}
+
+.firstTextContent {
+    /* Span the second column and first row */
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.firstImage2 {
+    /* Span the second column, and second row */
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.second {
+    /* This grid will be proportional with two columns with a 1fr and 2fr ratio, and three rows set to auto. Provide margins and padding as necessary.  */
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto auto;
+}
+
+.rghtTextContent {
+    /* Span the first column, and second and third rows */
+   grid-column: 1;
+   grid-row: 2/4;
+}
+
+.secondImage1 {
+    /* Span the second column and the first two rows */
+    grid-column: 2;
+    grid-row: 1/3;
+}
+
+.flexed {
+    /* You may need some spacing here with margins and padding */
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+ /* Media Query Closing */
+}

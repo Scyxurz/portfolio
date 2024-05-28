@@ -1,0 +1,132 @@
+html{
+    margin: 0;
+    height: 100%;
+}
+body {
+    margin: 0;
+    height: 100%;
+    width: auto;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-image: url("../images/rit_pond.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header{
+    position: fixed;
+    top: 0px;
+}
+nav {
+    position: fixed;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+/*Horizontal dropdown menu for the nav bar.
+A lot was taken from the demonstration and edited to fit the page.*/
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav a {
+    font-weight: bold;
+    font-size: larger;
+    color: rgb(0, 0, 210);
+    text-decoration: none;
+}
+
+nav li li a {
+    display: block;
+    font-weight: normal;
+    color: rgb(0, 0, 210);
+}
+
+nav li {
+    float: left;
+    width: 33.3334vw;
+    padding: 12px 0;
+    text-align: center;
+    cursor: default;
+    background-color: #a1cdf3;
+    /*
+    border: 1px solid black;
+    border-width: 0px 0px 1px 0px;*/
+}
+
+nav li li {
+    display: block;
+    float: none;
+    background-color: #a1cdf3;
+    border: 0;
+}
+
+nav li ul {
+    display: none;
+    position: absolute;
+    font-weight: normal;
+    margin-top: 12px;
+    padding: 0;
+    border: solid 1px black;
+    border-top: 0;
+}
+
+nav li:hover ul {
+    display: block;
+}
+
+nav li li a:hover {
+    color: white;
+    cursor: pointer;
+}
+
+nav li li a:active {
+    color: lightgray;
+}
+
+#buffer{
+    margin-top: 10vh;
+}
+/*Grid work for main content of homepage*/
+.container {
+    display: grid;
+    width: 80%;
+    justify-self: center;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 20px;
+    margin: auto;
+    column-gap: 5%;
+    background-color: #e1eff8be;
+    border-radius: 25px;
+}
+
+#face {
+    border-radius: 50%;
+    padding: 4px;
+    grid-column: 1/2;
+    grid-row: 1/4;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 4px;
+    font-size: 1.2em;
+}
+
+#intro {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    align-self: center;
+}
+
+footer{
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    width: 100%;
+    color: lightsteelblue;
+}

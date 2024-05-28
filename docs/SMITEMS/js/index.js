@@ -202,8 +202,8 @@ HiRezApi.Paladins = PaladinsApi;
 function startAPI(){
   const api = new HiRezApi.Smite({
     platform: "PC",
-    devId: "4511",
-    authKey: "609CF5B6004747658F579BFEAA669B2A",
+    devId: "", //deleted for security purposes
+    authKey: "",//deleted for security purposes
   });
   // api.getServerStatus().then(console.log);
   return api;
